@@ -1,0 +1,19 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!221 &22100000
+AnimatorOverrideController:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: _DragonKnightController
+  m_Controller: {fileID: 9100000, guid: 5a8e138b0e716db43a1e1543130d6908, type: 2}
+  m_Clips:
+  - m_OriginalClip: {fileID: 7400000, guid: 503ccd6f9ddcd2148a85c31a3bc09599, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: b76661f37a99dc5419519a7416ee8efd, type: 2}
+  - m_OriginalClip: {fileID: 7400000, guid: aa20c6fbccfa1e64f9e559901b6f7183, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: ec8bd637301c11341990cad24fe193bf, type: 2}
+  - m_OriginalClip: {fileID: 7400000, guid: 7c0aac3e78c336f41bf34561c9ae6fe6, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: b3ef29be6e751e24e8b36fb73ae4acea, type: 2}
+  - m_OriginalClip: {fileID: 7400000, guid: bc204ff631704384f9e01a1c3c1a1165, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: 005907afe6eec1640864bc617a8dbd4a, type: 2}
