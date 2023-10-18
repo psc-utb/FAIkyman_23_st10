@@ -47,6 +47,21 @@ public class KnightController : MonoBehaviour
         }
     }
 
+
+    void LateUpdate()
+    {
+        if (transform.localScale.x < 0
+            && _rigidBody2D.velocity.x > 0
+            ||
+            transform.localScale.x > 0
+            && _rigidBody2D.velocity.x < 0)
+        {
+            Vector3 localScale = transform.localScale;
+            localScale.x *= -1;
+            transform.localScale = localScale;
+        }
+    }
+
     public void StopAttacking()
     {
         _isAttacking = false;
