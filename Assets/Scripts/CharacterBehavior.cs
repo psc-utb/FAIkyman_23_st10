@@ -1,21 +1,26 @@
+using CodeMonkey.HealthSystemCM;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using hrdina_a_drak.Postavy;
 
-public class CharacterBehavior : MonoBehaviour
+public class CharacterBehavior : MonoBehaviour, IGetHealthSystem
 {
-    Postava character;
+    [SerializeField]
+    CharacterUnity character;
 
-    // Start is called before the first frame update
-    void Start()
+    HealthSystem _healthSystem;
+    void Awake()
     {
-        
+        _healthSystem = new HealthSystem(character.MaxZdravi);
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+    }
+
+    public HealthSystem GetHealthSystem()
+    {
+        return _healthSystem;
     }
 }
