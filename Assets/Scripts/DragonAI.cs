@@ -29,24 +29,33 @@ public class DragonAI : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        float distance = target.position.x - this.transform.position.x;
-        //Vector2.Distance()
+        if (target != null)
+        {
+            float distance = target.position.x - this.transform.position.x;
+            //Vector2.Distance()
 
-        direction = Mathf.Sign(distance);
+            direction = Mathf.Sign(distance);
 
-        if (Mathf.Abs(distance) < distanceToAttack && isAttacking == false)
+            if (Mathf.Abs(distance) < distanceToAttack && isAttacking == false)
+            {
+                _animatorController.SetBool("Moving", false);
+                _animatorController.SetTrigger("Attack");
+                isAttacking = true;
+
+                _rigidBody2D.velocity = new Vector2(0, _rigidBody2D.velocity.y);
+            }
+            else if (isAttacking == false)
+            {
+                _animatorController.SetBool("Moving", true);
+
+                _rigidBody2D.velocity = new Vector2(direction * speed, _rigidBody2D.velocity.y);
+            }
+        }
+        else
         {
             _animatorController.SetBool("Moving", false);
-            _animatorController.SetTrigger("Attack");
-            isAttacking = true;
 
             _rigidBody2D.velocity = new Vector2(0, _rigidBody2D.velocity.y);
-        }
-        else if(isAttacking == false)
-        {
-            _animatorController.SetBool("Moving", true);
-
-            _rigidBody2D.velocity = new Vector2(direction * speed, _rigidBody2D.velocity.y);
         }
     }
 
@@ -67,5 +76,15 @@ public class DragonAI : MonoBehaviour
     public void StopAttacking()
     {
         isAttacking = false;
+    }
+
+    public void StartDeadAnimation(GameObject character)
+    {
+        _animatorController.SetTrigger("Dead");
+    }
+
+    public void DestroyDragon()
+    {
+        Destroy(this.transform.parent.gameObject);
     }
 }
