@@ -11,6 +11,7 @@ public class CharacterBehavior : MonoBehaviour, IGetHealthSystem
     CharacterUnity character;
 
     public UnityEvent<GameObject> Dead;
+    public UnityEvent<GameObject, int> HealthChanged;
 
     HealthSystem _healthSystem;
     void Awake()
@@ -38,9 +39,10 @@ public class CharacterBehavior : MonoBehaviour, IGetHealthSystem
             enemy._healthSystem.SetHealth(enemy.character.Zdravi);
         }
     }
-    private void Character_ZdraviZmeneno(int arg1, int arg2)
+    private void Character_ZdraviZmeneno(int oldHealth, int newHealth)
     {
-        
+        HealthChanged?.Invoke(this.gameObject, newHealth - oldHealth);
+
         if(character.JeZiva() == false)
         {
             Dead?.Invoke(this.gameObject);
