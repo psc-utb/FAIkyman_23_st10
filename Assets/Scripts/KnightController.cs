@@ -43,7 +43,7 @@ public class KnightController : MonoBehaviour
         else
         {
             _animatorController.SetBool("Moving", false);
-            _rigidBody2D.velocity = Vector2.zero; //new Vector2(0, _rigidBody2D.velocity.y);
+            _rigidBody2D.velocity = new Vector2(0, _rigidBody2D.velocity.y);  //Vector2.zero;
         }
     }
 

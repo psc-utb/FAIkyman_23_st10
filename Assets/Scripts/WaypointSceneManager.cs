@@ -21,10 +21,19 @@ public class WaypointSceneManager : MonoBehaviour
     [SerializeField]
     string ShowText;
 
+    [SerializeField]
+    bool TriggerOnce = true;
+    bool wasTriggered = false;
+
+
     private void OnTriggerEnter2D(Collider2D collision)
     {
+        if (TriggerOnce == true && wasTriggered == true)
+            return;
+
         if (collision.gameObject == triggerGO)
         {
+            wasTriggered = true;
             var go = new GameObject();
             go.name = $"HlaskaZeStudny";
             go.transform.position = new Vector2(transform.position.x, transform.position.y + 1);
@@ -33,14 +42,14 @@ public class WaypointSceneManager : MonoBehaviour
 
             if (font != null)
                 text.font = font;
-            text.fontSize = 4.5f;
+            text.fontSize = 5.5f;
 
             text.enableWordWrapping = false;
 
             text.alignment = TextAlignmentOptions.Center;
 
             text.text = ShowText;
-            text.color = Color.cyan;
+            text.color = Color.red;
 
             text.renderer.sortingLayerName = "UI";
             text.rectTransform.sizeDelta = new Vector2(2, 2);
